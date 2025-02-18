@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Función que genera un número aleatorio entre 1 y 9
+function generarNumeroAleatorio() {
+    return Math.floor(Math.random() * 9) + 1;
+}
+
+// Función principal del juego
+function jugar() {
+    let jugarOtraVez = true; // Bandera para repetir el juego
+
+    while (jugarOtraVez) {
+        // Generar número aleatorio de la computadora
+        let numeroComputadora = generarNumeroAleatorio();
+
+        // Pedir al usuario un número entre 3 y 6
+        let numeroUsuario;
+        do {
+            numeroUsuario = parseInt(prompt("Por favor ingresa un número entre 3 y 6:"));
+        } while (numeroUsuario < 3 || numeroUsuario > 6); // Validación del número
+
+        // Pedir al usuario que adivine si su número es mayor, menor o igual al número de la computadora
+        let adivinanza = prompt("¿Tu número es mayor, menor o igual al número de la computadora?");
+
+        // Validar adivinanza
+        let resultado = "";
+        if (adivinanza.toLowerCase() === "mayor" && numeroUsuario > numeroComputadora) {
+            resultado = "¡Ha adivinado!";
+        } else if (adivinanza.toLowerCase() === "menor" && numeroUsuario < numeroComputadora) {
+            resultado = "¡Ha adivinado!";
+        } else if (adivinanza.toLowerCase() === "igual" && numeroUsuario === numeroComputadora) {
+            resultado = "¡Ha adivinado!";
+        } else {
+            resultado = "¡No ha adivinado!";
+        }
+
+        // Mostrar el resultado del juego
+        alert(`La computadora eligió el número ${numeroComputadora}. Tú elegiste el número ${numeroUsuario}. Tu elección es ${adivinanza}. ${resultado}`);
+
+        // Preguntar si el usuario quiere jugar otra vez
+        jugarOtraVez = confirm("¿Quieres jugar otra vez?");
+
+        if (!jugarOtraVez) {
+            // Mostrar mensaje final con nombre y número de carnet
+            alert("Gracias por jugar. Tu nombre es Otto Hernandez y tu número de carnet es 08001620.");
+        }
+    }
+}
+
+// Llamar la función para iniciar el juego
+jugar();
+
+    </script>
+</body>
+</html>
